@@ -1,0 +1,33 @@
+version: "3.6"
+
+services:
+
+  api-report:
+
+    build: .
+
+    image: varilink/telos/toolbox
+
+    environment:
+      - TOOL=api-report
+      - XDEBUG_CLIENT_HOST
+      - XDEBUG_CLIENT_PORT
+
+    volumes:
+      - ./src:/usr/local/src:ro
+      - ./telos.phplib:/usr/local/lib:ro
+
+  get-peers:
+
+    build: .
+
+    image: varilink/telos/toolbox
+
+    environment:
+      - TOOL=get-peers
+      - XDEBUG_CLIENT_HOST
+      - XDEBUG_CLIENT_PORT
+
+    volumes:
+      - ./src:/usr/local/src:ro
+      - ./telos.phplib:/usr/local/lib:ro

@@ -1,0 +1,3 @@
+[submodule "telos.phplib"]
+	path = telos.phplib
+	url = git@github.com:varilink/telos.phplib.git
