@@ -17,7 +17,7 @@ The tools use PHP that is mapped as volumes into the Docker containers (so that 
 This tool generates a report on API nodes advertised by the Telos block producers for a chain; for example, to output a report for the Telos testnet to the file api-report.csv:
 
 ```bash
-docker-compose run --rm api-report https://testnet-api.telosuk.io > api-report.csv 
+docker-compose run --rm api-report https://testnet-api.telosuk.io > api-report.csv
 ```
 
 The report requires that a valid API endpoint for the chain being queried is supplied; the example above uses https://testnet-api.telosuk.io, which is the Telos UK API endpoint for the Telos testnet. As the example suggests, the output is in CSV format for easy import into a spreadsheet application. It contains a header row and columns as follows:
@@ -45,7 +45,7 @@ docker-compose run -T --rm get-peers https://testnet-api.telosuk.io 1>peers.ini 
 
 The report requires that a valid API endpoint for the chain being queried is supplied; the example above uses https://testnet-api.telosuk.io, which is the Telos UK API endpoint for the Telos testnet. It writes `p2p-peer-address` entries to STDOUT and reports the issues encountered when trying to find valid P2P peer addresses to STDERR. By default, Docker Compose attaches the local terminal to both STDOUT and STDERR, therefore to separate the `p2p-peer-address` list and the issue reports in the output we must use the `-T` flag as per the above.
 
-Note that the report does *not* attempt nodeos communication with a P2P endpoint as a validation check for the `p2p-peer-address` entries. It's test include, for example, validation by telnet to the advertised address but they do not include anything based on the relevant EOSIO communication protocols. Thus if an advertised `p2p-peer-address` passes all the tests that this tool applies this is *not* a guarantee that synchronisation via that address will be possible.
+Note that the report does *not* attempt nodeos communication with a P2P endpoint as a validation check for the `p2p-peer-address` entries. It's tests include, for example, validation by telnet to the advertised address but they do not include anything based on the relevant EOSIO communication protocols. Thus if an advertised `p2p-peer-address` passes all the tests that this tool applies this is *not* a guarantee that synchronisation via that address will be possible.
 
 Conversely, I'm fairly sure that if an address fails the tests that this tool applies then that *is* a guarantee that synchronisation via the address will *not* be possible. However, I will of course look carefully into any report from a block producer who believes that they are incorrectly appearing in the errors report.
 
